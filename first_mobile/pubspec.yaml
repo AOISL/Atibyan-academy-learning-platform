@@ -16,7 +16,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
 # In Windows, build-name is used as the major, minor, and patch parts
 # of the product and file versions while build-number is used as the build suffix.
-version: 1.0.1+4
+version: 1.0.1+5
 
 environment:
   sdk: ^3.10.7
@@ -47,13 +47,15 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
+  flutter_lints: ^6.0.0
+  flutter_launcher_icons: ^0.14.3   # ← add this line (check pub.dev for latest 
+  flutter_native_splash: ^2.4.7
+  rename: ^3.0.2
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^6.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -68,10 +70,8 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/images/
-    # - assets/images/aoi10.png
 
-     
+   - assets/images/logo.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
@@ -100,13 +100,33 @@ flutter:
   # see https://flutter.dev/to/font-from-package
 
 flutter_native_splash:
-  
-  
-         # background color
-  image: assets/aoi.png       # your Atibyan logo (centered)
-  color_dark: "#4CAF50"          # optional dark mode
-  image_dark: assets/aoi.png
-  
-  android_12:                    # important for modern Android
-    image: assets/aoi.png
-    icon_background_color: "2E7D32"
+  color: "#4CAF50"               # Main background color (light mode) – REQUIRED
+  image: assets/images/logo.png          # Your AOI logo – centered automatically
+
+  # Optional: dark mode support (if your app has dark theme)
+  color_dark: "#2E7D32"          # Darker green for dark mode
+  image_dark: assets/images/logo.png     # Same logo or make a light version if needed
+
+  android: true
+  ios: true
+
+  # Critical for Android 12, 13, 14, 15+ – uses centered icon + background color
+  android_12:
+    color: "#4CAF50"             # Matches main color
+    image: assets/images/logo.png        # Centered logo (recommend 960×960 or 1152×1152 PNG)
+    icon_background_color: "#2E7D32"   # Circle/icon background on Android 12+
+
+  # Optional extras (uncomment if needed)
+  # fullscreen: true             # Hide status bar on Android during splash
+  # android_gravity: center
+  # ios_content_mode: center
+
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/logo.png"
+  min_sdk_android: 21
+  remove_alpha_ios: true
+  adaptive_icon_background: "#4CAF50"
+  adaptive_icon_foreground: "assets/images/logo.png"  # Make sure this is "images" not "imags"

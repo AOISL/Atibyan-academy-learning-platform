@@ -54,7 +54,7 @@ class _SplashScreenState extends State<SplashScreen>
             children: [
               // Your logo
               Image.asset(
-                'assets/images/aoi_logo.png',
+                'assets/images/logo.png',
                 width: 200,
                 height: 200,
                 fit: BoxFit.contain,

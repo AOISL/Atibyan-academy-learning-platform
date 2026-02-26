@@ -1,4 +1,4 @@
-package com.najat.first_mobile
+package com.first_mobile
 
 import io.flutter.embedding.android.FlutterActivity
 
